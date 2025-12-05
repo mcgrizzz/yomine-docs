@@ -7,8 +7,7 @@ import tailwindcss from '@tailwindcss/vite';
 
 // https://astro.build/config
 export default defineConfig({
-  site: 'https://mcgrizzz.github.io',
-  base: '/yomine-docs/',
+  site: 'https://www.yomine.dev',
   integrations: [
       starlight({
           title: '⚠️WIP⚠️',
