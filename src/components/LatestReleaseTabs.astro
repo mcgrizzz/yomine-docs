@@ -1,0 +1,74 @@
+---
+import { LinkButton } from "@astrojs/starlight/components";
+import { getLatestRelease } from "../lib/githubRelease";
+
+const { assets } = await getLatestRelease();
+
+type Asset = {
+  name: string;
+  browser_download_url: string;
+};
+
+const findAsset = (pattern: RegExp): Asset | undefined =>
+  assets.find((asset) => pattern.test(asset.name));
+
+const windowsAsset = findAsset(/windows.*x64.*\.exe$/i);
+const macAsset = findAsset(/macos.*universal/i);
+const linuxAsset = findAsset(/linux.*x64$/i);
+
+const fallbackHref = "https://github.com/mcgrizzz/Yomine/releases/latest";
+---
+
+{
+  windowsAsset || macAsset || linuxAsset ? (
+    <div class="mt-3 flex flex-wrap gap-1">
+      {windowsAsset && (
+        <LinkButton
+          href={windowsAsset.browser_download_url}
+          variant="secondary"
+          icon="download"
+          iconPlacement="start"
+          class="h-8 justify-center"
+        >
+          Windows
+        </LinkButton>
+      )}
+
+      {macAsset && (
+        <LinkButton
+          href={macAsset.browser_download_url}
+          variant="secondary"
+          icon="download"
+          iconPlacement="start"
+          class="h-8 justify-center"
+        >
+          macOS
+        </LinkButton>
+      )}
+
+      {linuxAsset && (
+        <LinkButton
+          href={linuxAsset.browser_download_url}
+          variant="secondary"
+          icon="download"
+          iconPlacement="start"
+          class="h-8 justify-center"
+        >
+          Linux
+        </LinkButton>
+      )}
+    </div>
+  ) : (
+    <div class="mt-3">
+      <LinkButton
+        href={fallbackHref}
+        variant="secondary"
+        icon="external"
+        iconPlacement="end"
+        class="h-10 justify-center"
+      >
+        View latest release on GitHub
+      </LinkButton>
+    </div>
+  )
+}

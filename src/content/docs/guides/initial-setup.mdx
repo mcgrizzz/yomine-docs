@@ -1,0 +1,126 @@
+---
+title: Initial Setup
+description: Get up and running with Yomine.
+---
+
+import {
+  Aside,
+  Steps,
+  LinkButton,
+  Card,
+  CardGrid,
+  Code,
+  Tabs, 
+  TabItem,
+} from "@astrojs/starlight/components";
+import LatestReleaseTabs from "../../../components/LatestReleaseTabs.astro";
+import LatestReleaseBadge from "../../../components/LatestReleaseBadge.astro";
+
+export const anki_connect_code = "2055492159";
+export const mpv_run_command = "mpv --input-ipc-server=/tmp/mpv-socket videofile.mkv"
+
+## Dependencies
+
+Yomine works best alongside a few other tools. You can install these **before or after** installing Yomine.
+
+  <Card title="AnkiConnect" icon="open-book">
+     <table className="dep-table">
+      <tbody>
+        <tr>
+          <td class="text-green-400">+</td>
+          <td>Filter out cards known cards</td>
+        </tr>
+        <tr>
+          <td class="text-green-400">+</td>
+          <td>Estimate how much you understand</td>
+        </tr>
+      </tbody>
+    </table>
+    **In Anki**    
+    `Tools` > `Add-ons` > `Get Add-ons`
+    Paste in this code and hit `OK`
+    <Code code={anki_connect_code} lang="js" /> 
+    Restart Anki. Done.
+  </Card>
+
+  <Card title="Video player (asbplayer or mpv)" icon="seti:video">
+    <table className="dep-table">
+      <tbody>
+        <tr>
+          <td class="text-green-400">+</td>
+          <td>Instantly see your term in context</td>
+        </tr>
+        <tr>
+          <td class="text-green-400">+</td>
+          <td>Efficient Mining Workflow</td>
+        </tr>
+      </tbody>
+    </table>
+    <Tabs>
+      <TabItem label="asbplayer">
+        <LinkButton
+          href="https://github.com/killergerbah/asbplayer?tab=readme-ov-file#getting-started"
+          variant="secondary"
+          icon="download"
+          iconPlacement="start"
+          class="h-8 justify-center"
+        >
+          Install asbplayer
+        </LinkButton>
+        `MISC` > `Enable WebSocket client`
+        [Link to advanced section where we describe that you can change the port that our websocket runs on and therefore also have a different websocket setting in asbplayer]
+      </TabItem>
+      <TabItem label="mpv">
+        <LinkButton
+          href="https://mpv.io/installation/"
+          variant="secondary"
+          icon="download"
+          iconPlacement="start"
+          class="h-8 justify-center"
+        >
+          Install mpv
+        </LinkButton>
+        When launching mpv, add the `--input-ipc-server=/tmp/mpv-socket` flag
+        <Code code={mpv_run_command} lang="bash" /> 
+      </TabItem>
+    </Tabs>
+  </Card>
+
+## Installation
+
+<Steps>
+
+1. Download the latest release <LatestReleaseBadge />
+
+   <LatestReleaseTabs />
+
+2. Run your downloaded binary
+
+   ![Setup incomplete banner in Yomine](/src/assets/initial_setup.webp)
+
+   <Aside title="First launch" icon="starlight">
+     Yomine will install the tokenizer and a frequency dictionary.
+   </Aside>
+
+3. Setup Integrations
+
+    If these are not complete, there will be banner at the top of the screen which says `Setup Incomplete.` You can click it for an overview of what must be done.
+
+    If mpv or asbplayer is running, yomine will automatically detect it so no further setup is required.
+
+    Anki:
+    Make sure Ankiconnect is setup and anki is running. 
+    In the setup checklist click `Setup Anki` or go to `Settings` > `Anki`
+
+    For each notetype you want to use:
+    Select the notetype, then make sure the term field and reading field is set correctly. Yomine will try to automatically detect these, but you may override the selections if you want.
+    Click add.
+    Click save settings
+
+    Setup is now complete.
+
+4. Open a subtitle file by clicking 'Open New File' or dragging it into Yomine.
+
+</Steps>
+
+## Troubleshooting

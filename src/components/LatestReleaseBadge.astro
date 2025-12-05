@@ -1,0 +1,10 @@
+---
+import { Badge } from "@astrojs/starlight/components";
+import { getLatestRelease } from "../lib/githubRelease";
+
+const { tagName } = await getLatestRelease();
+const cleaned = tagName?.replace(/^v/i, "") ?? "";
+const text = cleaned ? `v${cleaned}` : "";
+---
+
+{text && <Badge text={text} size="small" variant="note" />}
