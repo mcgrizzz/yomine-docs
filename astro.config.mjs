@@ -2,8 +2,8 @@
 import { defineConfig } from 'astro/config';
 import starlight from '@astrojs/starlight';
 import catppuccin from "@catppuccin/starlight";
-
 import tailwindcss from '@tailwindcss/vite';
+import starlightKbd from 'starlight-kbd'
 
 // https://astro.build/config
 export default defineConfig({
@@ -14,7 +14,7 @@ export default defineConfig({
           customCss: [
             './src/styles/global.css',
         ],
-          social: [{ icon: 'github', label: 'GitHub', href: 'https://github.com/withastro/starlight' }],
+          social: [{ icon: 'github', label: 'GitHub', href: 'https://github.com/mcgrizzz/Yomine' }],
           sidebar: [
               {
                   label: 'Guides',
@@ -24,11 +24,21 @@ export default defineConfig({
               },
               {
                   label: 'Reference',
-                  autogenerate: { directory: 'reference' },
+                  items: [
+                      { label: 'Keybinds', slug: 'reference/keybinds'}
+                  ]
               },
           ],
           plugins: [
-              catppuccin()
+              catppuccin(),
+              starlightKbd({
+                globalPicker: false,
+                types: [
+                  { id: 'windows', label: 'Windows', detector: 'windows', default: true},
+                  { id: 'mac', label: 'macOS', detector: 'apple'},
+                  { id: 'linux', label: 'Linux', detector: 'linux'},
+                ],
+              }),
           ]
       }),
 	],
