@@ -10,7 +10,7 @@ export default defineConfig({
   site: 'https://www.yomine.dev',
   integrations: [
       starlight({
-          title: '⚠️WIP⚠️',
+          title: 'Yomine Docs [WIP]',
           customCss: [
             './src/styles/global.css',
         ],

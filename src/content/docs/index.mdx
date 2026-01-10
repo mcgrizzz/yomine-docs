@@ -1,40 +1,46 @@
 ---
-title: Welcome to Starlight
+title: Yomine
 description: Get started building your docs site with Starlight.
 template: splash # Remove or comment out this line to display the site sidebar on this page.
 hero:
-  tagline: Congrats on setting up a new Starlight project!
+  tagline: Find the most useful words from native content
   image:
-    file: ../../assets/houston.webp
+    file: ../../assets/icon.png
   actions:
     - text: Intial Setup
       link: guides/initial-setup/
       icon: right-arrow
-    - text: Read the Starlight docs
-      link: https://starlight.astro.build
-      icon: external
-      variant: minimal
 ---
 
 import { Card, CardGrid } from '@astrojs/starlight/components';
 
-## Next steps
+## Features
+
 
 <CardGrid stagger>
-	<Card title="Update content" icon="pencil">
-		Edit `src/content/docs/index.mdx` to see this page change.
+	<Card title="Mine vocabulary from real content" icon="document">
+		Analyze subtitle files to extract vocabulary directly from the shows,
+		movies, and videos you actually watch.
 	</Card>
-	<Card title="Change page layout" icon="document">
-		Delete `template: splash` in `src/content/docs/index.mdx` to display a
-		sidebar on this page.
+
+	<Card title="Direct video navigation" icon="seti:video">
+		Jump straight from a term to the exact moment in video using ASBPlayer or MPV
+		integration. Quickly mine the term and move on to the next one.
 	</Card>
-	<Card title="Add new content" icon="add-document">
-		Add Markdown or MDX files to `src/content/docs` to create new pages.
+
+	<Card title="Smart ranking & filtering" icon="setting">
+		Prioritize words using flexible ranking and filtering across frequency,
+		parts of speech, and sentence comprehension - or directly search for a
+		specific term to find it in real context.
 	</Card>
-	<Card title="Configure your site" icon="setting">
-		Edit your `sidebar` and other config in `astro.config.mjs`.
+
+	<Card title="Anki Integration" icon="open-book">
+		Automatically filter out terms you already have cards for. No need to
+		manually check each term.
 	</Card>
-	<Card title="Read the docs" icon="open-book">
-		Learn more in [the Starlight Docs](https://starlight.astro.build/).
+
+	<Card title="Ignore List Support" icon="moon">
+		Create ignore lists for words you already know or have no interest in
+		learning. For example, English loan words.
 	</Card>
 </CardGrid>
